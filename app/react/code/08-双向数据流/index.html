@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../../vendor/react-with-addons.js"></script>
+    <script src="../../vendor/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script type="text/babel">
+        /*var AppComponent = React.createClass({
+            mixins:[React.addons.LinkedStateMixin],
+            getInitialState: function () {
+                return {
+                    isTrue:true,
+                    message:'lalala',
+                }
+            },
+            render: function () {
+                return (
+                        <div>
+                            <p>{this.state.message}</p>
+                            <p>{this.state.isTrue?'yes':'no'}</p>
+                            <input type="text" valueLink={this.linkState('message')}/>
+                        </div>
+                )
+            }
+        });
+        ReactDOM.render(<AppComponent/>,document.getElementById('app'));*/
+        var AppComponent = React.createClass({
+            mixins:[React.addons.LinkedStateMixin],
+            getInitialState: function () {
+                return {
+                    isTrue:true,
+                    message:'haha',
+                }
+            },
+            render: function () {
+                return (
+                        <div>
+                            <p>{this.state.message}</p>
+                            <p>{this.state.isTrue?'good':'bad'}</p>
+                            <input type="text" valueLink={this.linkState('message')}/>
+                            <input type="checkbox" checkedLink={this.linkState('isTrue')}/>
+                        </div>
+                )
+            }
+        });
+        ReactDOM.render(<AppComponent/>,document.getElementById('app'));
+    </script>
+</body>
+</html>

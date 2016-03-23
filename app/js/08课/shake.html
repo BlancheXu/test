@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1 {
+            width: 20px;
+            height: 20px;
+            background: #000;
+            position: absolute;
+            left: 10px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="div1"></div>-->
+    <!--<div id="div2"></div>-->
+    <script>
+        for(var i=0;i<10;i++) {
+            document.body.innerHTML += '<div style="width: 20px;height: 20px;background-color: #000;position: absolute;top:20px;left:'+ (10+i*30) + 'px;">'+'</div>';
+        }
+
+        var oDiv = document.getElementById('div1');
+        var aDiv = document.getElementsByTagName('div');
+        function getStyle(obj,attr) {
+            return obj.currentStyle?obj.currentStyle(attr):getComputedStyle(obj)[attr];
+        }
+        function shake(obj,attr,step,pos) {
+            var num = 0;
+            var timer = null;
+            var arr = [];
+//            var pos = parseInt(getStyle(obj,attr));
+            for(var i=step;i>0;i-=2) {
+                arr.push(i,-i);
+            }
+            arr.push(0);
+
+            clearInterval(timer);
+            timer = setInterval(function() {
+                pos += arr[num];
+                obj.style[attr] = pos + 'px';
+                num++;
+                if(num === arr.length) {
+                    clearInterval(timer);
+                }
+            },50);
+        }
+//        oDiv.onclick = function() {
+//        }
+        for(var i=0;i<aDiv.length;i++) {
+            var pos = parseInt(getStyle(aDiv[i],'top'));
+            aDiv[i].onmouseover = function() {
+                shake(this,'top',20,pos);
+            }
+        }
+    </script>
+</body>
+</html>

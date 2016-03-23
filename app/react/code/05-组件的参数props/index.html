@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../../vendor/react.js"></script>
+    <script src="../../vendor/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script type="text/babel">
+
+        var ClickApp = React.createClass({
+            getInitialState: function () {
+                return {
+                    clickCount: 0,
+                    subMessages: [
+                            'a', 'b' ,'c'
+                    ],
+
+                }
+            },
+            handleClick: function () {
+                this.setState({clickCount: this.state.clickCount + 1})
+            },
+            render: function () {
+                return (
+                        <div>
+                            <h1 onClick={this.handleClick}>clickMe</h1>
+                            <p>clicked {this.state.clickCount} times</p>
+                            <SubMessage messages={this.state.subMessages}/>
+                        </div>
+                )
+            }
+        });
+        var SubMessage = React.createClass({
+            PropTypes:{//验证传来数据格式是否正确
+                messages:React.PropTypes.array.isRequired
+
+            },
+            getDefaultProps: function () {
+                return {
+                    messages:['none']
+                }
+            },
+            render: function () {
+                var arr = [];
+                this.props.messages.forEach(function (msg,index) {
+                    arr.push(<p key={'sub'+index}>{msg}</p>)
+                });
+                return (
+                        <h3>{arr}</h3>
+                )
+            }
+        })
+        ReactDOM.render(<ClickApp/>,document.getElementById('app'));
+        /*var ClickApp = React.createClass({
+            getInitialState: function () {
+                return {
+                    clickCount:0,
+                    title:'ClickApp',
+                    mess : [
+                        1,2,3
+                    ]
+                }
+            },
+            handleClick: function () {
+                this.setState({clickCount:this.state.clickCount + 1})
+            },
+            render: function () {
+                return(
+                        <div>
+                            <h1 onClick={this.handleClick}>ClickMe {this.props.title}</h1>
+                            <p>clicked {this.state.clickCount} times</p>
+                            <Submessage messages={this.state.mess}/>
+                        </div>
+                )
+            }
+        });
+        var Submessage = React.createClass({
+
+            render: function () {
+                var arr = [];
+                this.props.messages.forEach(function (msg,index) {
+                    arr.push(<p key={index}>{msg}</p>);
+                });
+                return (
+                        <h3>{arr}</h3>
+                )
+            }
+        })
+        var title = 'windowProps';
+        ReactDOM.render(<ClickApp title={title}/>,document.getElementById('app'));*/
+    </script>
+</body>
+</html>

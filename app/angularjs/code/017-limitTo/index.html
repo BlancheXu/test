@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="firstController">
+        <p>{{[1,2,3,4,5,6,7,8,9,0]|limitTo:-3}}</p>
+        <p>{{Data.message |uppercase}}</p>
+        <p>{{Data.city|filter:'sh'}}</p>
+        <p>{{Data.city|filter:{jc:'sh'} }}</p>
+        <p>{{Data.city|orderBy:'jc' }}</p>
+        <p>{{Data.city|orderBy:'-jc' }}</p>
+        <p>{{Data.city|filter:checkName}}</p>
+    </div>
+
+<script type="application/javascript" src="../../vendor/angular/angular.min.js"></script>
+<script type="application/javascript" src="app/index.js"></script>
+</body>
+</html>

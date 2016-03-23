@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="firstController">
+        <ul ng-repeat="user in Data | filterAge">
+            {{user.name }}{{user.age}}{{user.city}}
+        </ul>
+    </div>
+<script src="../../vendor/angular/angular.min.js"></script>
+<script src="app/index1.js"></script>
+</body>
+</html>

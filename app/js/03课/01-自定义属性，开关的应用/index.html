@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        li{
+            width: 100px;
+            height: 100px;
+            background-color: #00d6b2;
+            float: left;
+            margin-right: 20px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script type="text/javascript">
+        window.onload = function() {
+            var aLi = document.getElementsByTagName('li');
+            for(var i=0;i<aLi.length;i++) {
+                aLi[i].isOn = false;
+                aLi[i].onclick = function() {
+                    if(!this.isOn) {
+                        this.style.background = 'red';
+                        this.isOn = true;
+                    }else{
+                        this.style.background = '#00d6b2';
+                        this.isOn = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!-- 渲染指令：
+        ng-init
+        ng-bind
+        ng-include
+        ng-bind-template
+    -->
+    <div ng-app="myApp" ng-controller="firstController">
+        <button ng-click="changeValue($event)">切换</button>
+        <p ng-style="defaultStyle">{{value}}</p>
+        <ul ng-switch on="value">
+            <li ng-switch-when="true">true</li>
+            <li ng-switch-when="false"> false</li>
+        </ul>
+    </div>
+    <script src="../../vendor/angular/angular.min.js"></script>
+    <script src="app/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="firstController">
+        <input type="text" value="" ng-model="name.message"/>
+        <p>firstController:{{name.message}}</p>
+    </div>
+    <div ng-controller="secondController">
+        <p>secondController:{{Data.message}}</p>
+    </div>
+</body>
+<script type="application/javascript" src="../../vendor/angular/angular.min.js"></script>
+<script type="application/javascript" src="app/index1.js"></script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <!--<form>
+        <input type="radio" name="sex" value="male" /> Male
+        <br />
+        <input type="radio" name="sex" value="female" /> Female
+    </form>-->
+    <script src="../../vendor/react.js"></script>
+    <script src="../../vendor/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script type="text/babel">
+        /*var SubmitForm = React.createClass({
+            getInitialState:function() {
+                return {
+                    textValue:'insert your name',
+                    radioValue:'A',
+                }
+            },
+            handleText:function(e) {
+                this.setState({textValue: e.target.value});
+            },
+            render:function (){
+                return (
+                    <form id="form1">
+                        <input type="text" value={this.state.textValue} onChange={this.handleText}/>
+                        <input type="radio" DefaultValue="A" defaultChecked/>
+                        <input type="radio" DefaultValue="B"/>
+                    </form>
+                )
+            }
+        });
+        ReactDOM.render(<SubmitForm/>,document.getElementById('app'));*/
+        var SubmitForm = React.createClass({
+            getInitialState:function() {
+                return {
+                    inputValue:'hello',
+                    radioValue:'A',
+                    checkboxValue:[],
+                }
+            },
+            handleSubmit:function (e) {
+                e.preventDefault();
+                var formDatas = {
+                    input:this.refs['goodInput'].value,
+                    radio:this.state.radioValue,
+                    checkbox:this.state.checkboxValue
+                };
+//                console.log(ReactDOM.findDOMNode(this.refs['goodInput']).value);
+                console.log(this.refs['goodInput'].value);
+                console.log(formDatas);
+            },
+            handleInput:function (e) {
+                this.setState({inputValue: e.target.value});
+            },
+            handleRadio:function (e) {
+                this.setState({radioValue: e.target.value});
+            },
+            handleCheckbox:function (e) {
+                var checkboxValue = this.state.checkboxValue.slice();
+                var newValue = e.target.value;
+                var idx = checkboxValue.indexOf(newValue);
+                if(idx != -1) {
+                    checkboxValue.splice(idx,1);
+                }else {
+                    checkboxValue.push(newValue);
+                }
+                this.setState({checkboxValue: checkboxValue});
+            },
+            render:function () {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" ref="goodInput" defaultValue={this.state.inputValue}/>
+                        <input type="radio" name="radio" value="A" onChange={this.handleRadio}/>
+                        <input type="radio" name="radio" value="B" onChange={this.handleRadio } defaultChecked/>
+                        <input type="checkbox" value="good" onChange={this.handleCheckbox} defaultChecked/>
+                        <input type="checkbox" value="bad" onChange={this.handleCheckbox}/>
+                        <input type="submit" />
+                    </form>
+                )
+            }
+        });
+        ReactDOM.render(<SubmitForm/>,document.getElementById('app'));
+    </script>
+</body>
+</html>
