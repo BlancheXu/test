@@ -1,3 +1,0 @@
---no-cache --update --sourcemap --watch $FileName$:$FileParentDir$\css\$FileNameWithoutExtension$.css
-
-$FileNameWithoutExtension$.css:$FileNameWithoutExtension$.css.map
